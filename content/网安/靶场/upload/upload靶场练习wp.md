@@ -132,3 +132,94 @@
 
 # pass4
 
+* 先看源码
+![[Pasted image 20261112162111.png]]
+
+* 红色框框里的就是上传文件的黑名单，和pass3 很像，可这一次把php的亲戚也给拉黑了，但是它里面没有htaccess。
+==🟡绕过方法——htaccess绕过== 
+* 详解：
+ 直接编写htaccess文件，然后上传。例：
+```
+ <FilesMatch "web.jpg">
+  SetHandler application/x-httpd-php
+</FilesMatch>
+```
+  
+ ok,这样就成功上传了。
+ 
+ ![[Pasted image 20261112164005.png]]
+
+==🟡为什么要用htaccess呢？==
+
+* htaccess文件攻击有三种方式;
+  1. 如果黑名单过滤了所有的能执行的后缀名，如果允许上传.htaccess。当.htaccess文件的内容如下，会将内容符合php语法规则的文件当作php文件解析.
+```
+  SetHandler application/x-httpd-php
+```
+  2.  该文件还会匹配文件名中的关键字，如：[1.php.jpg]中包含.php,并且.htaccess文件的内容如下，[1.php.jpg]中的代码就会被执行
+```
+AddHandler php5-script .php
+```
+  3. 匹配文件名，当.htaccess文件内容如下，它可以将匹配到的文件名的文件中的代码执行
+```
+<FilesMatch "sxc">
+    SetHandler application/x-httpd-php
+</FilesMatch>
+```
+（以上内容是主包从别人哪里薅过来的，别问主包为什么不自己写，因为主包也不完全懂）
+
+
+# pass5 
+
+* 依旧先看源码
+![[Pasted image 20261112164921.png]]
+* 不难发现这一关与前两关类似，但是这次htaccess也在黑名单里跟php亲戚一桌了。
+* ==🟡解题：==
+  1. .user.ini绕过
+    编辑一个文件名为.user,ini的文件，内容如下：
+```
+auto_prepend_file=web.jpg
+```
+再上传文件：
+![[Pasted image 20261112170514.png]]
+
+可以右击打开图片查看一下
+![[Pasted image 20261112170724.png]]
+
+==🟡为什么要用.user.ini呢？==
+![[Pasted image 20261112171227.png]]
+（下面这一大段主包不能说完全懂，只能说完全不懂，但是主包已经call重点啦）
+
+2.   ==🟡.  绕过==
+   ![[Pasted image 20261112172058.png]]
+
+   注意看源码中的这两段，如果我们上传web.php. （这里有一个空格），按照源码程序，末尾的空格和 . 会被抹去，最后文件存为web.php
+   ![[Pasted image 20261112173246.png]]
+   * 这款i有一个小小的问题，主包编辑了一个文件名为web.php的文件，但是保存后后缀就多了一个.tet，等待解答中....
+   ![[Pasted image 20261112173522.png]] 
+
+* 上传文件，可以抓包文件看一下：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# pass6
+
+
