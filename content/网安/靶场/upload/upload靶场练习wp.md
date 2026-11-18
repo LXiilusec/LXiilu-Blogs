@@ -154,25 +154,11 @@
  
  ![[Pasted image 20261112164005.png]]
 
+## htaccess文件
 ==🟡为什么要用htaccess呢？==
 
-* htaccess文件攻击有三种方式;
-  1. 如果黑名单过滤了所有的能执行的后缀名，如果允许上传.htaccess。当.htaccess文件的内容如下，会将内容符合php语法规则的文件当作php文件解析.
-```
-  SetHandler application/x-httpd-php
-```
-  2.  该文件还会匹配文件名中的关键字，如：[1.php.jpg]中包含.php,并且.htaccess文件的内容如下，[1.php.jpg]中的代码就会被执行
-```
-AddHandler php5-script .php
-```
-  3. 匹配文件名，当.htaccess文件内容如下，它可以将匹配到的文件名的文件中的代码执行
-```
-<FilesMatch "sxc">
-    SetHandler application/x-httpd-php
-</FilesMatch>
-```
-（以上内容是主包从别人哪里薅过来的，别问主包为什么不自己写，因为主包也不完全懂）
-
+* https://chatgpt.com/share/6afdde52-4958-83e8-b432-feb1119c7e35
+* 上面链接中是对htacccess文件的具体讲解。（主包第四条没怎么看懂，之后弄懂了再补充）
 
 # pass5 
 
@@ -191,13 +177,19 @@ auto_prepend_file=web.jpg
 可以右击打开图片查看一下
 ![[Pasted image 20261118201549.png]]
 
+* 这里为后续补充内容：
+  到这里，这段代码并没有被按照php语言执行，只是被原样返回了。（但是主包做的时候并没有意识到）就像下面这一段，被执行和原样返回是不一样的。
 
 ![[Pasted image 20261118201405.png]]
 
 ![[Pasted image 20261118201512.png]]
-==🟡为什么要用.user.ini呢？==
-![[Pasted image 20261112171227.png]]
-（下面这一大段主包不能说完全懂，只能说完全不懂，但是主包已经call重点啦）
+
+## .user.ini文件
+==🟡为什么要用这个.user.ini文件呢？==
+* https://chatgpt.com/share/6afdda87-fa80-83ec-b144-4acee8123d9e
+* 不得不说AI是个好东西，上面的链接是关于这个知识点讲解。
+
+
 
 
 2.   ==🟡.  绕过==
@@ -207,21 +199,6 @@ auto_prepend_file=web.jpg
    ![[Pasted image 20261112173246.png]]
    * 这里有一个小小的问题，主包编辑了一个文件名为web.php的文件，但是保存后后缀就多了一个.tet，等待解答中....
    ![[Pasted image 20261112173522.png]] 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -247,6 +224,9 @@ $file_ext = strtolower($file_ext);
 * ![[Pasted image 20261112180448.png]]
 * 很简单就上传成功了
 * ![[Pasted image 20261112180707.png]]
+
+
+
 # pass7
 
 * 依旧先看源码
@@ -271,7 +251,7 @@ $file_ext = strtolower($file_ext);
 
 
 
-
+==🔵主包发现了，一涉及到用点和空格的绕过方式就无法上传==
 
 
 
@@ -287,7 +267,12 @@ $file_ext = strtolower($file_ext);
 * ok,上传成功，太欣慰了，，终于成功一次了【主包感动到痛哭流涕】
 
 
+
 # pass10
+
+* 依旧先看源码
+* ![[Pasted image 20261119002058.png]]
+
 
 
 # pass11
