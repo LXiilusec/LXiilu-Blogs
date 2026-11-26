@@ -495,4 +495,30 @@ http://localhost/upload/include.php？file=./upload/6320261127014639.png](http:/
 * 依旧看源码
 ![[Pasted image 20261127022059.png]]
 
-* 
+* call重点![[Pasted image 20261127022925.png]]
+* 这里补充一点：文件头
+  ![[Pasted image 20261127023404.png]]
+* 而这里的`exif_imagetype()` 的人物就是检查上面蓝色部分所代表的文件签名（文件头），而不是完整解析整个图片。
+
+* 绕过：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+![[Pasted image 20261127023924.png]]
