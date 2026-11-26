@@ -490,4 +490,9 @@ http://localhost/upload/include.php？file=./upload/6320261127014639.png](http:/
 
 
 
-## pass16
+## pass16（**文件内容检测绕过（图片文件头检测）**）
+
+* 依旧看源码
+![[Pasted image 20261127022059.png]]
+
+* 
