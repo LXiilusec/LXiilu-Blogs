@@ -476,4 +476,18 @@ echo "IMAGE_INCLUDE_OK";
 * 3.按win+R。打开CMD命令，输入：
 ![[Pasted image 20261127014036.png]]
 ![[Pasted image 20261127014215.png]]
-* 4.
+* 4.在靶场中上传![[Pasted image 20261127014745.png]]
+* 5.上传时，服务器会给图片重新命名，到这一步还不能证明php代码执行，下一步：访问这个图片地址，这里我们需要自己拼一个地址：[
+http://localhost/upload/include.php？file=./upload/6320261127014639.png](http://localhost/upload/include.php?file=./upload/6320261127014639.png)
+
+![[Pasted image 20261127020854.png]]（这是服务器站点）
+![[Pasted image 20261127020939.png]]（靶场所在目录）
+![[Pasted image 20261127021026.png]]（图片马的相对路径）
+* 6.![[Pasted image 20261127021154.png]]
+* 但是但是，主包的windows解析不出来，主包也是放弃了哈....
+* ![[Pasted image 20261127021316.png]]
+（GPT分析了主包的报错）
+
+
+
+## pass16
