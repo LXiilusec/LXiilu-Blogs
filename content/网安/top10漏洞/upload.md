@@ -579,3 +579,10 @@ copy /b 1.png+test.txt test.png
 
 ## pass17
 
+
+* 先看源码，整体流程：
+![[Pasted image 20261129000544.png]]
+* 这里出现了一个新的函数：
+![[Pasted image 20261129000213.png]]
+他的作用是提取路径中最后面的文件名部分。
+* 
