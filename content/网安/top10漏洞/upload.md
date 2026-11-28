@@ -582,7 +582,25 @@ copy /b 1.png+test.txt test.png
 
 * 先看源码，整体流程：
 ![[Pasted image 20261129000544.png]]
+
+### 函数：basename()
+
 * 这里出现了一个新的函数：
 ![[Pasted image 20261129000213.png]]
 他的作用是提取路径中最后面的文件名部分。
-* 
+* ==call重点==：
+![[Pasted image 20261129000857.png]]
+
+```
+$im = imagecreatefromgif($target_path);
+```
+这个函数属于 PHP 的 GD 图像处理库。
+它不是单纯地检查图片文件头，而是尝试解码整个 jpg图片，生成供 PHP 处理的图像数据。
+如果解码失败就会执行下一步：
+```
+if($im == false){
+    $msg = "该文件不是jpg格式的图片！";
+    @unlink($target_path);
+}
+```
+**注：unlink()：删除文件**。
